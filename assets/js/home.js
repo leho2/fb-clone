@@ -14,7 +14,6 @@ const myWall = $('.my-wall')
 const newfeeds = JSON.parse(localStorage.getItem('newfeeds')) || []
 const users = JSON.parse(localStorage.getItem('users')) || []
 const comments = JSON.parse(localStorage.getItem('comments')) || []
-const obj = JSON.parse(localStorage.getItem('obj')) || {}
 
 
 //xem thêm, ấn bớt item layout trái
@@ -467,25 +466,6 @@ const app = (() => {
         },
         handle(){
             const _this = this
-
-            //dark mode
-            const darkBtns = $$('.header-switch__box ')
-            const app = $('.app')
-            darkBtns.forEach(dark => {
-                dark.onclick = function() {
-                    if(this.classList.contains('dark')) {
-                        this.classList.remove('dark')
-                        app.classList.remove('dark')
-                        obj.mode = 'light'
-                    } else {
-                        this.classList.add('dark')
-                        app.classList.add('dark')
-                        obj.mode = 'dark'
-                    }
-    
-                    localStorage.setItem('obj', JSON.stringify(obj))
-                }
-            })
 
             //container <-> wall
             const showWall = () => {

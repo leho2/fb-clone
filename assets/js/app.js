@@ -6,12 +6,38 @@ const itemsHeaderRight = $$('.header-right__item')
 const newNotifyList = $('.notify-content__new-list')
 const oldNotifyList = $('.notify-content__before-list')
 
+const obj = JSON.parse(localStorage.getItem('obj')) || {}
+
 //close overplay
-overplay.onclick = (e) => {
-    if (!(e.target.closest('.overplay-body'))) {
-        overplay.style.display = 'none'
-        document.body.style.overflow = 'auto'
+if (overplay) {
+    overplay.onclick = (e) => {
+        if (!(e.target.closest('.overplay-body'))) {
+            overplay.style.display = 'none'
+            document.body.style.overflow = 'auto'
+        }
     }
+}
+
+//dark mode
+const darkBtns = $$('.header-switch__box ')
+const appComponent = $('.app')
+
+if (darkBtns && appComponent) {
+    darkBtns.forEach(dark => {
+        dark.onclick = function() {
+            if(this.classList.contains('dark')) {
+                this.classList.remove('dark')
+                appComponent.classList.remove('dark')
+                obj.mode = 'light'
+            } else {
+                this.classList.add('dark')
+                appComponent.classList.add('dark')
+                obj.mode = 'dark'
+            }
+    
+            localStorage.setItem('obj', JSON.stringify(obj))
+        }
+    })
 }
 
 //show, hide menu sub header right
@@ -23,8 +49,11 @@ if (itemsHeaderRight.length != 0) {
             const itemActive = $('.header-right__item.active')
             item.classList.toggle('active')
             if(toggle) {
+                const containerLeft = $('.container-left')
                 toggle.classList.remove('active')
-                $('.container-left').classList.remove('active')
+                if (containerLeft) {
+                    containerLeft.classList.remove('active')
+                }
             }
             if (itemActive) {
                 itemActive.classList.remove('active')

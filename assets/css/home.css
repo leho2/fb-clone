@@ -1,25 +1,11 @@
-/* @import "./abstracts/_variables.css"; */
+/* @import "./abstracts/_variables.css";
 @import "./components/_header.css";
 @import "./components/_footer.css";
 @import "./components/_switchmode.css";
 @import "./layout/_home-container.css";
 @import "./layout/_home-wall.css";
 @import "./layout/_home-newfeed.css";
-@import "./layout/_home-post-box.css";
-
-:root {
-    --primary-color: #1877f2;
-    --bg-color: #f0f2f5;
-    --text-color: #1c1e21;
-    --white-color: #fff;
-    --border-color: #dddfe2;
-    --placeholder-color: #9e949c;
-    --green-color: #42b72a;
-    --gray-color: #75777b;
-    --header-height: 56px;
-    --hover-item: rgb(224, 223, 223);
-    --rgba-black: rgba(0, 0, 0, 0.1);
-  }
+@import "./layout/_home-post-box.css"; */
 
 .app {
     background: var(--bg-color);

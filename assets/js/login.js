@@ -66,7 +66,12 @@ signUpForm.onsubmit = (e) => {
         localStorage.setItem('users', JSON.stringify(users))
     } else {
         e.preventDefault()
-        alert('Sđt hoặc mail đã tồn tại!')
+        cuteAlert({
+            type: "error",
+            title: "Lỗi",
+            message: "Sdt hoặc email đã tồn tại!",
+            buttonText: "Okay"
+        })
     }
 }
 
@@ -91,7 +96,12 @@ loginForm.onsubmit = (e) => {
         localStorage.setItem('users', JSON.stringify(users))
     } else {
         e.preventDefault()
-        alert('Sai tên TK hoặc PW')
+        cuteAlert({
+            type: "error",
+            title: "Lỗi",
+            message: "Sai tên tài khoản hoặc mật khẩu!",
+            buttonText: "Okay"
+        })
     }
     
 }

@@ -224,7 +224,7 @@ window.onclick = function(e){
     }
 }
 
-// 2 user đầu tiên
+// storage
 const F = (() => {
     const users = [
         {
@@ -239,6 +239,7 @@ const F = (() => {
             postLiked: ["1", "2"],
             cmtLiked: ["0"],
             isLogin: false,
+            onl: 0,
         },
         {
             id: 1,
@@ -251,6 +252,7 @@ const F = (() => {
             postLiked: ["0"],
             cmtLiked: ["1"],
             isLogin: false,
+            onl: 0,
         }
     ]
 
@@ -344,6 +346,57 @@ const F = (() => {
         mode: "light",
     }
 
+    const messengers = [
+        {
+            id: 0,
+            idUser: 0,
+            idAuthor: 1,
+            content: "Đây là tin nhắn 1",
+            deleted: false,
+            isReact: true,
+        },
+        {
+            id: 1,
+            idUser: 0,
+            idAuthor: 0,
+            content: "Đây là tin nhắn 2",
+            deleted: false,
+            isReact: false,
+        },
+        {
+            id: 2,
+            idUser: 1,
+            idAuthor: 1,
+            content: "Đây là tin nhắn 3",
+            deleted: false,
+            isReact: true,
+        },
+        {
+            id: 3,
+            idUser: 1,
+            idAuthor: 0,
+            content: "Đây là tin nhắn 4",
+            deleted: false,
+            isReact: false,
+        },
+        {
+            id: 4,
+            idUser: 2,
+            idAuthor: 0,
+            content: "Đây là tin nhắn 5",
+            deleted: false,
+            isReact: true,
+        },
+        {
+            id: 5,
+            idUser: 2,
+            idAuthor: 1,
+            content: "Đây là tin nhắn 6",
+            deleted: false,
+            isReact: true,
+        }
+    ]
+
     return {
 
         setStorage(){
@@ -358,6 +411,9 @@ const F = (() => {
 
             localStorage.getItem('obj') ? null :
             localStorage.setItem('obj', JSON.stringify(obj))
+
+            localStorage.getItem('messengers') ? null :
+            localStorage.setItem('messengers', JSON.stringify(messengers))
         }
     }
 })().setStorage()

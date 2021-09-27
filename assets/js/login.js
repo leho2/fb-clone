@@ -8,7 +8,6 @@ const phone = $('.sign-up__phone')
 const password = $('.sign-up__pw')
 const userName = $('#TK')
 const userPassword = $('#PW')
-const obj = JSON.parse(localStorage.getItem('obj')) || {}
 
 //show signup
 navSignUp.onclick = () => {
@@ -60,6 +59,7 @@ signUpForm.onsubmit = (e) => {
             postLiked: [],
             cmtLiked: [],
             isLogin: true,
+            onl: 0,
         }
         users.push(obj)
         clearInput()

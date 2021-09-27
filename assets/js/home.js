@@ -105,7 +105,9 @@ const x = users.find((user, index) => {
     return user.isLogin
 })
 
+
 const app = (() => {
+    const users = JSON.parse(localStorage.getItem('users')) || []
 
     return {
         idUser: x ? id : null,
@@ -525,6 +527,7 @@ const app = (() => {
                 users.forEach((user) => {
                     user.isLogin = false
                 })
+                users[this.idUser].onl = 1
                 localStorage.setItem('users', JSON.stringify(users))
             }
 

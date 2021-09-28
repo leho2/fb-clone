@@ -24,3 +24,8 @@
     --rgba-black: rgba(255, 255, 255, 0.6);
     --active-min: #252f3c;
 }
+
+.switch-mode-mess {
+    margin-left: auto;
+    margin-right: 20px;
+}

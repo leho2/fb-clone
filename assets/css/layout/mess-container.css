@@ -132,6 +132,7 @@
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid var(--border-color);
+    flex-shrink: 0;
 }
 
 .container-left__item-avatar-img {
@@ -140,6 +141,7 @@
 
 .container-left__item-info {
     margin-left: 8px;
+    margin-right: 8px;
 }
 
 .container-left__item-info-name {
@@ -158,14 +160,22 @@
 
 .container-left__item-info-last-mess {
     margin-right: 4px;
+    line-height: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .container-left__item-info-time {
     margin-left: 4px;
+    flex-shrink: 0;
+    align-self: center;
 }
 
 .container-left__item-see {
-    margin-left: auto;  
+    margin-left: auto;
 }
 
 .container-left__item-see.seen
@@ -539,7 +549,6 @@
     background: var(--bg-color);
     flex: 1;
     border-radius: 20px;
-    overflow: hidden;
 }
 
 .container-main__bottom-search-input {
@@ -550,10 +559,48 @@
     background: var(--bg-color);
     padding: 0 16px;
     font-size: 1.5rem;
+    border-radius: 20px;
 }
 
 .container-main__bottom-search__icon {
+    position: relative;
+}
 
+.container-main__bottom-search__list-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    transform: translateY(-100%);
+    grid-template-columns: repeat(4, 1fr);
+    box-shadow: 0 1px 2px var(--rgba-black),
+                -1px -1px 2px var(--rgba-black);
+    background: var(--white-color);
+    padding: 8px;
+    border-radius: 4px;
+    display: none;
+}
+
+.container-main__bottom-search__list-icon.active {
+    display: grid;
+}
+
+.container-main__bottom-search__list-icon::after {
+    position: absolute;
+    content: "";
+    bottom: -16px;
+    right: 12px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: var(--white-color) transparent transparent transparent;
+}
+
+.container-main__bottom-icon-item {
+    width: 20px;
+    height: 20px;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-main__bottom-right {
@@ -583,6 +630,7 @@
 
 .container-right {
     width: 340px;
+    height: calc(100vh - var(--header-height));
 }
 
 .container-right__head {

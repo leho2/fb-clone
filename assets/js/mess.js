@@ -161,7 +161,7 @@ const app = (() => {
             this.renderUsers()
         },
         activeUser(){
-            if (this.idUserMess) {
+            if (this.idUserMess != null) {
                 const userList = $$('.container-left__item')
                 userList.forEach((user, index) => {
                     if (user.dataset.index == this.idUserMess) {
@@ -303,6 +303,12 @@ const app = (() => {
                 }
             }
 
+            //show/hide right layout
+            const moreBtn = $('.more-info-btn')
+            moreBtn.onclick = () => {
+                $('.container-right').classList.toggle('active')
+            }
+
             //icon list
             const iconBtn = $('.container-main__bottom-search__icon')
             const iconList = $('.container-main__bottom-search__list-icon')
@@ -398,6 +404,15 @@ const app = (() => {
             }
 
             //window onclick
+            window.onclick = (e) => {
+                const rightLayoutTarget = e.target.closest('.container-right')
+                const moreBtn = e.target.closest('.more-info-btn')
+                const rightLayout = $('.container-right')
+                if (!rightLayoutTarget && rightLayout.classList.contains('active') && !moreBtn) {
+                    rightLayout.classList.remove('active')
+                }
+                
+            }
 
         },
         start(){

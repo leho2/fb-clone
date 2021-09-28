@@ -61,144 +61,148 @@ if (itemsHeaderRight.length != 0) {
         }
     })
 
-    //show thông báo
-    const notifiesHeader = (() => {
+    const titleNewNotify = $('.new-notify__title')
 
-        const notifies = [
-            {
-                id: 0,
-                path: "./assets/img/Home/avatar-notify-1.jpg",
-                content: `Quản trị viên đã cập nhật phần mô tả của nhóm
-                <span>Gentle ∆</span>
-                . `,
-                time: 3,
-                seen: false,
-            },
-            {
-                id: 1,
-                path: "./assets/img/Home/avatar-notify-2.jpg",
-                content: `<span>Lộc Quang Trịnh</span>
-                và
-                <span>Nam Trần</span>
-                cũng đã bình luận về bài viết của
-                <span>Quốc Trịnh</span>
-                .`,
-                time: 13,
-                seen: false,
-            },
-            {
-                id: 2,
-                path: "./assets/img/Home/avatar-notify-3.jpg",
-                content: `<span>Quốc Trịnh</span>
-                đã nhắc đến bạn trong một bình luận.`,
-                time: 20,
-                seen: false,
-            },
-            {
-                id: 3,
-                path: "./assets/img/Home/avatar-notify-4.jpg",
-                content: `<span>Titan Gaming</span>
-                có 22 lượt xem mới.`,
-                time: 23,
-                seen: false,
-            },
-            {
-                id: 4,
-                path: "./assets/img/Home/avatar-notify-5.jpg",
-                content: `<span>Linh Trang</span>
-                đã bình luận về một ảnh bạn đang theo dõi trong
-                <span>Ngôi Sao Lấp Lánh Offical</span>
-                .`,
-                time: 30,
-                seen: true,
-            },
-            {
-                id: 5,
-                path: "./assets/img/Home/avatar-notify-6.jpg",
-                content: `<span>Lê Phước</span>
-                đã bình luận về trạng thái bạn chia sẻ.`,
-                time: 45,
-                seen: true,
-            },
-            {
-                id: 6,
-                path: "./assets/img/Home/avatar-notify-7.jpg",
-                content: `<span>Nguyễn Quốc Siêu</span>
-                đã bình luận về liên kết bạn chia sẻ.`,
-                time: 52,
-                seen: true,
-            },
-        ]
-
-        return {
-            render(arr, component){
-                const htmls = arr.map((notify, index) => {
-                    return `
-                    <li data-index="${notify.id}" class="notify-content__item ${notify.seen ? 'seen' : null}">
-                        <img src="${notify.path}" alt="" class="notify-content__item-avatar">
-                        <div class="notify-content__item-content">
-                            <div class="notify-content__item-content-text">
-                                ${notify.content}
+    if (titleNewNotify) {
+        //show thông báo
+        const notifiesHeader = (() => {
+    
+            const notifies = [
+                {
+                    id: 0,
+                    path: "./assets/img/Home/avatar-notify-1.jpg",
+                    content: `Quản trị viên đã cập nhật phần mô tả của nhóm
+                    <span>Gentle ∆</span>
+                    . `,
+                    time: 3,
+                    seen: false,
+                },
+                {
+                    id: 1,
+                    path: "./assets/img/Home/avatar-notify-2.jpg",
+                    content: `<span>Lộc Quang Trịnh</span>
+                    và
+                    <span>Nam Trần</span>
+                    cũng đã bình luận về bài viết của
+                    <span>Quốc Trịnh</span>
+                    .`,
+                    time: 13,
+                    seen: false,
+                },
+                {
+                    id: 2,
+                    path: "./assets/img/Home/avatar-notify-3.jpg",
+                    content: `<span>Quốc Trịnh</span>
+                    đã nhắc đến bạn trong một bình luận.`,
+                    time: 20,
+                    seen: false,
+                },
+                {
+                    id: 3,
+                    path: "./assets/img/Home/avatar-notify-4.jpg",
+                    content: `<span>Titan Gaming</span>
+                    có 22 lượt xem mới.`,
+                    time: 23,
+                    seen: false,
+                },
+                {
+                    id: 4,
+                    path: "./assets/img/Home/avatar-notify-5.jpg",
+                    content: `<span>Linh Trang</span>
+                    đã bình luận về một ảnh bạn đang theo dõi trong
+                    <span>Ngôi Sao Lấp Lánh Offical</span>
+                    .`,
+                    time: 30,
+                    seen: true,
+                },
+                {
+                    id: 5,
+                    path: "./assets/img/Home/avatar-notify-6.jpg",
+                    content: `<span>Lê Phước</span>
+                    đã bình luận về trạng thái bạn chia sẻ.`,
+                    time: 45,
+                    seen: true,
+                },
+                {
+                    id: 6,
+                    path: "./assets/img/Home/avatar-notify-7.jpg",
+                    content: `<span>Nguyễn Quốc Siêu</span>
+                    đã bình luận về liên kết bạn chia sẻ.`,
+                    time: 52,
+                    seen: true,
+                },
+            ]
+    
+            return {
+                render(arr, component){
+                    const htmls = arr.map((notify, index) => {
+                        return `
+                        <li data-index="${notify.id}" class="notify-content__item ${notify.seen ? 'seen' : null}">
+                            <img src="${notify.path}" alt="" class="notify-content__item-avatar">
+                            <div class="notify-content__item-content">
+                                <div class="notify-content__item-content-text">
+                                    ${notify.content}
+                                </div>
+                                <p " class="notify-content__item-time">
+                                    ${notify.time} phút trước
+                                </p>
                             </div>
-                            <p " class="notify-content__item-time">
-                                ${notify.time} phút trước
-                            </p>
-                        </div>
-                        <i class="fas fa-circle"></i>
-                    </li>
-                    `
-                })
-                .join('')
-                component.innerHTML = htmls
-            },
-            renderNotify(){
-                const titleNewNotify = $('.new-notify__title')
-                const countNotify = $('.header-right__item-count')
-                const newNotifies = notifies.filter(notify => !notify.seen)
-                const oldNotifies = notifies.filter(notify => notify.seen)
-                
-                if (titleNewNotify) {
-
-                }
-                //kiểm tra có còn thông báo mới hay không
-                if (newNotifies.length === 0) {
-                    titleNewNotify.style.display = 'none'
-                    countNotify.style.display = 'none'
-                } else {
-                    titleNewNotify.style.display = 'block'
-                    countNotify.innerHTML = newNotifies.length
-                    countNotify.style.display = 'flex'
-                }
-
-                this.render(newNotifies, newNotifyList)
-                this.render(oldNotifies, oldNotifyList)
-
-            },
-            handle(){
-
-                //clicked vào thông báo mới
-                newNotifyList.onclick = (e) => {
-                    const itemNew = e.target.closest('.notify-content__item')
-                    if (itemNew) {
-                        const id = itemNew.dataset.index
-                        notifies[id].seen = true
-                        this.renderNotify()
-                    }
-                }
-
-                setInterval(() => {
-                    notifies.forEach(notify => {
-                        notify.time += 1;
+                            <i class="fas fa-circle"></i>
+                        </li>
+                        `
                     })
+                    .join('')
+                    component.innerHTML = htmls
+                },
+                renderNotify(){
+                    const titleNewNotify = $('.new-notify__title')
+                    const countNotify = $('.header-right__item-count')
+                    const newNotifies = notifies.filter(notify => !notify.seen)
+                    const oldNotifies = notifies.filter(notify => notify.seen)
+                    
+                    if (titleNewNotify) {
+    
+                    }
+                    //kiểm tra có còn thông báo mới hay không
+                    if (newNotifies.length === 0) {
+                        titleNewNotify.style.display = 'none'
+                        countNotify.style.display = 'none'
+                    } else {
+                        titleNewNotify.style.display = 'block'
+                        countNotify.innerHTML = newNotifies.length
+                        countNotify.style.display = 'flex'
+                    }
+    
+                    this.render(newNotifies, newNotifyList)
+                    this.render(oldNotifies, oldNotifyList)
+    
+                },
+                handle(){
+    
+                    //clicked vào thông báo mới
+                    newNotifyList.onclick = (e) => {
+                        const itemNew = e.target.closest('.notify-content__item')
+                        if (itemNew) {
+                            const id = itemNew.dataset.index
+                            notifies[id].seen = true
+                            this.renderNotify()
+                        }
+                    }
+    
+                    setInterval(() => {
+                        notifies.forEach(notify => {
+                            notify.time += 1;
+                        })
+                        this.renderNotify()
+                    }, 60000)
+                },
+                start(){
                     this.renderNotify()
-                }, 60000)
-            },
-            start(){
-                this.renderNotify()
-                this.handle()
+                    this.handle()
+                }
             }
-        }
-    })().start()
+        })().start()
+    }
 }
 
 window.onclick = function(e){

@@ -538,15 +538,6 @@ const app = (() => {
 
                 }
             })
-            
-
-            //cập nhật thời gian
-            setInterval(() => {
-                newfeeds.forEach(item => {
-                    item.time += 1
-                })
-                localStorage.setItem('newfeeds', JSON.stringify(newfeeds))
-            }, 60000)
 
             //reload
             $('.header-left__logo').onclick = () => {
@@ -572,8 +563,9 @@ const app = (() => {
                 users.forEach((user) => {
                     user.isLogin = false
                 })
-                users[this.idUser].onl = 1
                 localStorage.setItem('users', JSON.stringify(users))
+                this.querySelector('a').setAttribute('href', 'index.html')
+                this.querySelector('a').click()
             }
 
             //mở đóng box

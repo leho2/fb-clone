@@ -466,11 +466,42 @@ const app = (() => {
             localStorage.setItem('comments', JSON.stringify(comments))
             this.render()
         },
+        renderMess(){
+            const messengers = JSON.parse(localStorage.getItem('messengers')) || []
+            const htmls = messengers.map(mess => {
+                if (mess.idUser != this.idUser && mess.endMess) {
+                    const user = users.find(user => user.id === mess.idUser)
+                    return `
+                    <li class="mess-item">
+                        <div class="mess-item__active">
+                            <img src="${user.avatar}" alt="" class="mess-item__avatar">
+                        </div>
+                        <div class="mess-list__info">
+                            <div class="mess-item__info-name">
+                                ${user.fullName}
+                            </div>
+                            <div class="mess-item__info-text">
+                                <div>
+                                    ${mess.content}
+                                </div>
+                                <i class="fas fa-circle"></i> 
+                                <span>
+                                    1 phút
+                                </span> 
+                            </div>
+                        </div>
+                    </li>
+                    `
+                }
+            }).join('')
+            $('.mess-list').innerHTML = htmls
+        },
         handle(){
             const _this = this
 
             //container <-> wall
             const showWall = () => {
+                $('.nav-left-layout').style.display = 'none'
                 $('.container').style.display = 'none'
                 $('.my-wall').style.display = 'block'
                 $$('.header-main__item').forEach(item => {
@@ -479,9 +510,18 @@ const app = (() => {
             }
 
             const showHome = () => {
+                if (window.innerWidth < 1240) {
+                    $('.nav-left-layout').style.display = 'flex'
+                }
                 $('.my-wall').style.display = 'none'
                 $('.container').style.display = 'flex'
                 $('.home-btn').classList.add('active')
+            }
+
+            window.onresize = () => {
+                if (window.innerWidth >= 1240) {
+                    $('.nav-left-layout').style.display = 'none'
+                }
             }
 
             $$('.nav-wall').forEach(item => {
@@ -498,6 +538,7 @@ const app = (() => {
 
                 }
             })
+            
 
             //cập nhật thời gian
             setInterval(() => {
@@ -509,7 +550,11 @@ const app = (() => {
 
             //reload
             $('.header-left__logo').onclick = () => {
-                location.reload()
+                if ($('.container').style.display == 'none') {
+                    showHome()
+                } else {
+                    location.reload()
+                }
             }
 
             //overplay
@@ -846,6 +891,7 @@ const app = (() => {
             
         },
         start(){
+            this.renderMess()
             this.render()
             this.handle()
         }

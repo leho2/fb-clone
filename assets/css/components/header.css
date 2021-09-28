@@ -395,6 +395,12 @@
 
 .mess-list {
     margin: 16px 0;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.mess-list::-webkit-scrollbar {
+    width: 8px;
 }
 
 .mess-item {
@@ -449,6 +455,19 @@
     align-items: center;
     font-size: 1.3rem;
     color: var(--gray-color);
+}
+
+.mess-item__info-text div {
+    line-height: 1.4rem;
+    height: 1.4rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.mess-item__info-text span {
+    flex-shrink: 0;
 }
 
 .mess-item__info-text i {

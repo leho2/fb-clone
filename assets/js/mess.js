@@ -57,35 +57,37 @@ const app = (() => {
             const htmls = users.map((user, index) => {
                 if (user.id !== this.idUser) {
                     const mess = messengers.find(mess => mess.idUser === user.id && mess.endMess)
-                    return `
-                    <li class="container-left__item" data-index=${user.id}>
-                        <div class="container-left__item-avatar">
-                            <img src="${user.avatar}" alt="" class="container-left__item-avatar-img">
-                        </div>
-                        <div class="container-left__item-info">
-                            <div class="container-left__item-info-name">
-                                ${user.fullName}
+                    if (mess) {
+                        return `
+                        <li class="container-left__item" data-index=${user.id}>
+                            <div class="container-left__item-avatar">
+                                <img src="${user.avatar}" alt="" class="container-left__item-avatar-img">
                             </div>
-                            <div class="container-left__item-info-sub">
-                                <div class="container-left__item-info-last-mess">
-                                    ${mess.content}
+                            <div class="container-left__item-info">
+                                <div class="container-left__item-info-name">
+                                    ${user.fullName}
                                 </div>
-                                ·
-                                <div class="container-left__item-info-time">
-                                    1 phút
+                                <div class="container-left__item-info-sub">
+                                    <div class="container-left__item-info-last-mess">
+                                        ${mess.content}
+                                    </div>
+                                    ·
+                                    <div class="container-left__item-info-time">
+                                        1 phút
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container-left__item-see ${mess.Author ? '' : 'seen'}">
-                            <div class="container-left__item-see-img">
-                                <img src="${user.avatar}" alt="">
+                            <div class="container-left__item-see ${mess.Author ? '' : 'seen'}">
+                                <div class="container-left__item-see-img">
+                                    <img src="${user.avatar}" alt="">
+                                </div>
+                                <div class="container-left__item-see-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
                             </div>
-                            <div class="container-left__item-see-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                        </div>
-                    </li>
-                    `
+                        </li>
+                        `
+                    }
                 }
             }).join('')
             $('.container-left__list').innerHTML = htmls
